@@ -77,11 +77,13 @@ function NotesContent({
     <div className={css.app}>
       <header className={css.toolbar}>
         <SearchBox onChange={debouncedSearch} />
-        <Pagination
-          pageCount={data?.totalPages ?? 1}
-          currentPage={page}
-          onPageChange={setPage}
-        />
+        {(data?.totalPages ?? 0) > 1 && (
+          <Pagination
+            pageCount={data?.totalPages ?? 1}
+            currentPage={page}
+            onPageChange={setPage}
+          />
+        )}
         <button className={css.button} onClick={() => setIsOpen(true)}>
           Create note +
         </button>
