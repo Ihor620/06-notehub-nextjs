@@ -67,7 +67,7 @@ function NotesContent({
     queryKey: ["notes", page, search],
     queryFn: () => fetchNotes(page, search),
     staleTime: 500,
-    placeholderData: { notes: [], totalPages: 0 },
+    placeholderData: (prev) => prev,
   });
 
   if (isLoading) return <p>Loading, please wait...</p>;
